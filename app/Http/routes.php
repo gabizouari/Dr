@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/mail', function () {
+
+    $data = ["content goes here"];
+    Mail::send('emails.welcome', $data, function ($message) {
+        $message->from('sabri.zouari@lybe.se', 'Laravel');
+        $message->to('gabizouari@gmail.com');
+    });
+
+    return "done";
 });
