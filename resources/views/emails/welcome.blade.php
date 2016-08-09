@@ -1,1 +1,1 @@
-email template
+email template {{$data}}
