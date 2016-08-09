@@ -26,6 +26,5 @@ Route::get('/mail', function () {
     return "done";
 });
 
-Route::get('partnership', function () {
-    return view('businessPartner.index');
-});
+
+Route::resource('partnership','BusinessPartnerController');
