@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,4 +29,8 @@ Route::get('/mail', function () {
 });
 
 
+Route::get('partnership/dashboard',  'BusinessPartnerController@dashboard');
+Route::get('partnership/logout','AuthenticationController@logout');
+
 Route::resource('partnership','BusinessPartnerController');
+Route::resource('authentication','AuthenticationController');

@@ -39,11 +39,13 @@
                     </form>
                     <!-- flash message -->
                     <div class="flash-message">
-                        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                            @if(Session::has('alert-' . $msg))
-                                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-                            @endif
-                        @endforeach
+                        @if(Session::has('register'))
+                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                @if(Session::has('alert-' . $msg))
+                                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                                @endif
+                            @endforeach
+                        @endif
                     </div> <!-- end .flash-message -->
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
@@ -65,7 +67,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ action('AuthenticationController@store') }}">
                         {!! csrf_field() !!}
 
                         <div class="form-group">
@@ -102,6 +104,16 @@
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
                             </div>
                         </div>
+                        <!-- flash message -->
+                        <div class="flash-message">
+                            @if(Session::has('auth'))
+                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                @if(Session::has('alert-' . $msg) && Session::has('auth'))
+                                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                                @endif
+                            @endforeach
+                                @endif
+                        </div> <!-- end .flash-message -->
                     </form>
                 </div>
             </div>

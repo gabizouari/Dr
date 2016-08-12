@@ -5776,4 +5776,8 @@ body {
   text-align: center;
   padding-right: 20px; }
 
+/* bootstrap override ***********************/
+.navbar-right {
+  margin-right: 20px; }
+
 /*# sourceMappingURL=app.css.map */
